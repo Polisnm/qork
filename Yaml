@@ -18,7 +18,7 @@ jobs:
       - name: Extract ZIP
         run: |
           # Unzips the file (replace 'your-file.zip' with your actual filename)
-          unzip -o your-file.zip -d extracted-files/ 
+          unzip -o SmartLogicTriggerApp.zip -d extracted-files/ 
           
       - name: Commit and Push Extracted Files
         run: |
