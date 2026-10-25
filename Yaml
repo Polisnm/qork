@@ -1,0 +1,29 @@
+name: Extract ZIP File
+
+on:
+  push:
+    paths:
+      - '**.zip' # Runs automatically whenever a ZIP file is pushed
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the workflow to commit files back to your repo
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Extract ZIP
+        run: |
+          # Unzips the file (replace 'your-file.zip' with your actual filename)
+          unzip -o your-file.zip -d extracted-files/ 
+          
+      - name: Commit and Push Extracted Files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          git add extracted-files/
+          git commit -m "Automated extraction of ZIP file contents" || exit 0
+          git push
