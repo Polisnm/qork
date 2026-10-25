@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SmartLogic Trigger App</string>
+    <string name="service_name">WhatsApp Excel Trigger Listener</string>
+</resources>
