@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path name="excel_files" path="." />
+    <external-files-path name="external_excel_files" path="." />
+</paths>
