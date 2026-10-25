@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Status & Permission Card -->
+        <TextView
+            android:id="@+id/tvPermissionStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF3CD"
+            android:padding="12dp"
+            android:text="Notification Access: Checking..."
+            android:textColor="#664D03"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnGrantPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="1. Enable Notification Access for WhatsApp" />
+
+        <!-- Settings Toggles -->
+        <Switch
+            android:id="@+id/switchServiceEnabled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:checked="true"
+            android:text="Enable WhatsApp Trigger Listener (!add, !delete, !pending, !completed)"
+            android:textSize="15sp" />
+
+        <Switch
+            android:id="@+id/switchAutoReply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:checked="true"
+            android:text="Auto-Reply Confirmation on WhatsApp"
+            android:textSize="15sp" />
+
+        <!-- Supported Commands Reference -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Excel Headings: Date | Name | Complaint | Remark"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="#F8F9FA"
+            android:padding="10dp"
+            android:text="• !add Name, Complaint, Remark\n  (e.g. !add Rahul, AC not cooling, New complaint)\n• !pending Name, Complaint, Remark\n  (Logs or updates row with Remark = Pending)\n• !pending  (Lists all Pending rows)\n• !completed ID or Name, Remark\n  (Updates row Remark to Completed &amp; lists if sent alone)\n• !delete ID or Name\n  (Deletes matching row from the Excel sheet)"
+            android:textColor="#212529"
+            android:textSize="13sp" />
+
+        <!-- Optional Google Sheets Webhook -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Optional Google Apps Script Webhook URL (for live Google Sheets sync):"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etWebhookUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="https://script.google.com/macros/s/.../exec (optional)"
+            android:inputType="textUri"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnSaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Settings" />
+
+        <!-- Built-in Command Tester -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Test Trigger Command Locally:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etTestCommand"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="e.g. !add Rahul, WiFi down, Checked"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnRunTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test" />
+        </LinearLayout>
+
+        <!-- Excel Export & Share Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnShareExcel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:text="Export / Share .XLSX" />
+
+            <Button
+                android:id="@+id/btnClearData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#DC3545"
+                android:text="Clear All" />
+        </LinearLayout>
+
+        <!-- Live Entries Log -->
+        <TextView
+            android:id="@+id/tvStatsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Excel Sheet Rows (0 entries):"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLogOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="#F1F3F5"
+            android:fontFamily="monospace"
+            android:minHeight="180dp"
+            android:padding="12dp"
+            android:text="No entries recorded yet. Send !add, !pending, !completed, or !delete on WhatsApp or use the Test box above."
+            android:textColor="#212529"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</ScrollView>
